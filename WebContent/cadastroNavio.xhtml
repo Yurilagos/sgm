@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<ui:composition template="template/template.xhtml">	
+<f:metadata>
+    <f:viewAction action="#{navioBean.listaNavios()}" />
+</f:metadata>
+	
+<ui:define name="conteudo">
+<h:form id="formListagem">
+		<b:button value="Adicionar" size="sm" icon="plus-sign" look="success" href="paginaAdicionarNavio.xhtml" />
+		    <b:dataTable value="#{navioBean.navios}"
+		               var="navio"
+		               excel="true"
+		               csv="true"
+		               pdf="true"
+		               columnVisibility="true"
+		               copy="true"
+		               print="true" 
+		               styleClass="table-responsive">
+			    <b:dataTableColumn value="#{navio.id}" label="ID Navio" />
+			    <b:dataTableColumn value="#{navio.nome}" label="Nome" />
+			    <b:dataTableColumn value="#{navio.status}" label="Status"/>
+			    <b:dataTableColumn label="Ações">
+			    <div align="center">
+			    <b:commandButton look="primary" actionListener="#{navioBean.atribuiNavio(navio)}" value="Alterar" size="xs" process="@this" update="@none"/>
+			    <b:commandButton look="danger" actionListener="#{navioBean.removeNavio(navio)}" value="Excluir" size="xs" process="@this" update="@form" />
+			    </div>	
+		    </b:dataTableColumn>
+	  </b:dataTable>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<ui:composition template="template/template.xhtml">	
+	
+<ui:define name="conteudo">		
+		<h:form id="form">
+			<b:panel title="Cadastro de Sensor" collapsible="false">
+				<b:panelGrid colSpans="2,10" size="xs">
+				
+				
+				<h:outputLabel value="ID" />
+				<b:inputText span="8" placeholder="Digite o ID" value="#{sensorBean.sensor.id}"/>
+				<h:outputLabel value="Nome" />
+				<b:inputText span="8" placeholder="Digite o nome" value="#{sensorBean.sensor.descricao}"/>
+				<h:outputLabel value="Status" />
+				<b:inputText span="8" placeholder="Digite o status" value="#{sensorBean.sensor.status}"/>
+				
+				<h:outputLabel value="Equipamento" />
+				<b:selectOneMenu value="#{sensorBean.sensor.equipamento}" span="8" required="true">
+			      <f:selectItem itemLabel="(Selecione...)" itemValue="" />
+			      <f:selectItems value="#{visaoSensor.equipamentos}" var="equipamento" itemLabel="#{equipamento.descricao}" itemValue="#{equipamento}" />
+			    </b:selectOneMenu>
+			      
+			      
+				</b:panelGrid>
+				
+				<p:commandButton value="Salvar" actionListener="#{sensorBean.cadastraSensor}" look="success" update="form"/>
+				
+			
+				
+			</b:panel>
+		</h:form>
+</ui:define>
+</ui:composition>
+</html>

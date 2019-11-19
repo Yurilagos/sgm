@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<ui:composition template="template/template.xhtml">	
+	
+<ui:define name="conteudo">
+<h:form id="formListagem">
+		<b:button value="Adicionar" size="sm" icon="plus-sign" look="success" href="paginaAdicionarEvento.xhtml" />
+		    <b:dataTable value="#{visaoEvento.eventos}"
+		               var="evento"
+		               excel="true"
+		               csv="true"
+		               pdf="true"
+		               columnVisibility="true"
+		               copy="true"
+		               print="true">
+				    <b:dataTableColumn value="#{evento.id}" label="ID Evento" />
+				    <b:dataTableColumn value="#{evento.descricao}" label="Descrição" />
+				    <b:dataTableColumn value="#{evento.data_time}" label="Data"/>
+				    <b:dataTableColumn value="#{evento.navio.id}" label="ID Navio"/>
+				    <b:dataTableColumn value="#{evento.navio.nome}" label="Nome Navio"/>
+				    <b:dataTableColumn value="#{evento.status}" label="Status Evento"/>
+				    
+			    <b:dataTableColumn label="Ações">
+			    <div align="center">
+			    <b:commandButton look="primary" size="xs" value="Alterar" />
+			    <b:commandButton look="danger" actionListener="#{visaoEvento.removeEvento(evento)}" value="Excluir" size="xs" process="@this" update="@form" />
+			    </div>	
+		    </b:dataTableColumn>
+	  </b:dataTable>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

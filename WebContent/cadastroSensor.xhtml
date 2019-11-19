@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="template/template.xhtml">	
+<f:metadata>
+    <f:viewAction action="#{sensorBean.listaSensores()}" />
+</f:metadata>
+<ui:define name="conteudo">
+	<h:form id="formListagem">
+		<b:commandButton value="Adicionar" size="sm" icon="plus-sign" look="success" actionListener="#{sensorBean.novoSensor()}" />
+	    <b:dataTable value="#{sensorBean.sensores}"
+	               var="sensor"
+	               excel="true"
+	               csv="true"
+	               pdf="true"
+	               columnVisibility="true"
+	               copy="true"
+	               print="true">
+		    <b:dataTableColumn value="#{sensor.id}" label="ID Sensor" />
+		    <b:dataTableColumn value="#{sensor.descricao}" label="Descricao" />
+		    <b:dataTableColumn value="#{sensor.equipamento.descricao}" label="Equipamento"/>
+		    <b:dataTableColumn value="#{sensor.status}" label="Status"/>
+				<b:dataTableColumn label="Ações">
+				    <div align="center">
+            			<b:commandButton look="primary" actionListener="#{sensorBean.atribuiSensor(sensor)}" value="Alterar" size="xs" process="@this" update="@none"/>
+					    <b:commandButton look="danger" actionListener="#{sensorBean.removeSensor(sensor)}" value="Excluir" size="xs" process="@this" update="@form" />
+				    </div>	
+				</b:dataTableColumn>
+	  	</b:dataTable>
+	  	
+	</h:form>
+
+
+</ui:define>
+</ui:composition>
+</html>

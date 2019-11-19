@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="template/template.xhtml">	
+	
+<ui:define name="conteudo">
+	<h:form id="formListagem">
+		<b:button value="Adicionar" size="sm" icon="plus-sign" look="success" href="paginaAdicionarErro.xhtml" />
+	    <b:dataTable value="#{visaoErro.erros}"
+	               var="erro"
+	               excel="true"
+	               csv="true"
+	               pdf="true"
+	               columnVisibility="true"
+	               copy="true"
+	               print="true">
+		    <b:dataTableColumn value="#{erro.id}" label="ID Erro" />
+		    <b:dataTableColumn value="#{erro.nome}" label="ID Nome" />
+		    <b:dataTableColumn value="#{erro.descricao}" label="Descrição Erro" />
+		    <b:dataTableColumn value="#{erro.tipo}" label="ID Tipo" />
+		    <b:dataTableColumn value="#{erro.status}" label="Status"/>
+		    <b:dataTableColumn value="#{erro.sensor.id}" label="Sensor"/>
+		    <b:dataTableColumn value="#{erro.equipamento.descricao}" label="Equipamento" />
+			<b:dataTableColumn label="Ações">
+				    <div align="center">
+					    <b:commandButton look="primary" size="xs" value="Alterar" />
+					    <b:commandButton look="danger" actionListener="#{visaoErro.removeErros(erro)}" value="Excluir" size="xs" process="@this" update="@form" />
+				    </div>	
+				</b:dataTableColumn>
+	  	</b:dataTable>
+	</h:form>
+	
+
+	
+</ui:define>
+</ui:composition>
+</html>

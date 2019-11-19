@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="template/template.xhtml">	
+<f:metadata>
+    <f:viewAction action="#{usuarioBean.listaUsuarios()}" />
+</f:metadata>
+<ui:define name="conteudo">
+	<h:form id="formListagem">
+		<b:commandButton value="Adicionar" size="sm" icon="plus-sign" look="success" actionListener="#{usuarioBean.novoUsuario()}" />
+	    <b:dataTable value="#{usuarioBean.usuarios}"
+	               var="usuario"
+	               excel="true"
+	               csv="true"
+	               pdf="true"
+	               columnVisibility="true"
+	               copy="true"
+	               print="true">
+		    <b:dataTableColumn value="#{usuario.id}" label="ID Usuário" />
+		    <b:dataTableColumn value="#{usuario.cpf}" label="CPF" />
+		    <b:dataTableColumn value="#{usuario.nome}" label="Nome"/>
+		    <b:dataTableColumn value="#{usuario.sobrenome}" label="Sobrenome"/>
+		    <b:dataTableColumn value="#{usuario.funcao}" label="Funcao"/>
+		    <b:dataTableColumn value="#{usuario.login}" label="Login" />
+			<b:dataTableColumn label="Ações">
+				    <div align="center">
+            			<b:commandButton look="primary" actionListener="#{usuarioBean.atribuiUsuario(usuario)}" value="Alterar" size="xs" process="@this" update="@none"/>
+					    <b:commandButton look="danger" actionListener="#{usuarioBean.removeUsuario(usuario)}" value="Excluir" size="xs" process="@this" update="@form" />
+				    </div>	
+				</b:dataTableColumn>
+	  	</b:dataTable>
+	  	
+	</h:form>
+	
+	
+	
+
+	
+</ui:define>
+</ui:composition>
+</html>

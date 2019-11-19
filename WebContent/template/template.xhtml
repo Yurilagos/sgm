@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+      
+ 
+      
+<h:head>
+<meta charset="ISO-8859-1"/>
+<title>DashBoard</title>
+
+</h:head>
+
+<h:body>
+
+
+<ui:insert name="menu">
+	<h:form id="formMenu">
+		<b:navBar brand-img="img/LOGOBRANCA.png" brandHref="index.xhtml"  inverse="true" fluid="true"  brand-img-style="width: 10%; position: absolute;">
+  			<b:navbarLinks pull="right">
+                <b:navLink value="Painel de Controle" href="NewFile.xhtml"></b:navLink>
+                <b:dropMenu value="Cadastro" iconAwesome="pencil-square-o">	
+      				<b:navLink value="Evento" href="cadastroEvento.xhtml"></b:navLink>
+      				<b:navLink value="Navio" href="cadastroNavio.xhtml"></b:navLink>
+      				<b:navLink value="Usuario" href="cadastroUsuario.xhtml"></b:navLink>
+      				<b:navLink value="Erro" href="cadastroErro.xhtml"></b:navLink>
+      				<b:navLink value="Equipamento" href="cadastroEquipamento.xhtml"></b:navLink>
+      				<b:navLink value="Sensor" href="cadastroSensor.xhtml"></b:navLink>
+   				</b:dropMenu>  
+                <b:navLink value="Ajuda" href="#"></b:navLink>
+                <b:navLink value="Sair" href="#"></b:navLink>
+            </b:navbarLinks>
+            <h:form styleClass="navbar-form navbar-right">
+                <div class="form-group">
+                    <b:inputText placeholder="Pesquisar..." fieldSize="sm"/>
+                </div>
+            </h:form>
+  		</b:navBar>
+	</h:form>	
+</ui:insert>
+<ui:insert name="conteudo">
+</ui:insert>	
+
+<ui:insert name="rodape">
+</ui:insert>	
+	
+
+	
+	
+</h:body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<ui:composition template="template/template.xhtml">	
+
+<f:metadata>
+    <f:viewAction action="#{equipamentoBean.listaEquipamentos()}" />
+</f:metadata>	
+<ui:define name="conteudo">
+<h:form id="formListagem">
+		<b:commandButton value="Adicionar" size="sm" icon="plus-sign" look="success" actionListener="#{equipamentoBean.novoEquipamento()}" />
+		    <b:dataTable value="#{equipamentoBean.equipamentos}"
+		               var="equipamento"
+		               excel="true"
+		               csv="true"
+		               pdf="true"
+		               columnVisibility="true"
+		               copy="true"
+		               print="true">
+			    <b:dataTableColumn value="#{equipamento.id}" label="ID Equipamento" />
+			    <b:dataTableColumn value="#{equipamento.descricao}" label="Descrição" />
+			    <b:dataTableColumn value="#{equipamento.status}" label="Status"/>
+			    <b:dataTableColumn label="Ações">
+			    <div align="center">
+           			<b:commandButton look="primary" actionListener="#{equipamentoBean.atribuiEquipamento(equipamento)}" value="Alterar" size="xs" process="@this" update="@none"/>
+				    <b:commandButton look="danger" actionListener="#{equipamentoBean.removeEquipamento(equipamento)}" value="Excluir" size="xs" process="@this" update="@form" />
+			    </div>	
+		    </b:dataTableColumn>
+	  </b:dataTable>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

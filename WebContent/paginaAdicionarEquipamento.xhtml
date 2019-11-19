@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="template/template.xhtml">	
+	
+<ui:define name="conteudo">
+	
+		<h:form id="form">
+			<b:panel title="Cadastro de Equipamento" collapsible="false">
+				<b:panelGrid colSpans="2,10" size="xs">
+				
+				<h:outputLabel value="Id" />
+				<b:inputText span="8" placeholder="Digite o Id" value="#{equipamentoBean.equipamento.id}"/>
+				<h:outputLabel value="Descrição" />
+				<b:inputText span="8" placeholder="Digite a Descrição" value="#{equipamentoBean.equipamento.descricao}"/>
+				<h:outputLabel value="Status" />
+				<b:inputText span="8" placeholder="Digite o Status" value="#{equipamentoBean.equipamento.status}"/>	
+					
+				</b:panelGrid>
+				<p:commandButton value="Salvar" actionListener="#{equipamentoBean.cadastraEquipamento}" look="success" update="form"/>
+				
+			</b:panel>
+		</h:form>
+	
+	
+</ui:define>
+</ui:composition>
+</html>

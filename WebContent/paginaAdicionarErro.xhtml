@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<ui:composition template="template/template.xhtml">	
+	
+<ui:define name="conteudo">		
+		<h:form>
+			<b:panel title="Cadastro de Erro" collapsible="false">
+				<b:panelGrid colSpans="2,10" size="xs">
+				
+				<h:outputLabel value="ID Erro" />
+				<b:inputText span="8" placeholder="Digite o ID" value="#{controleErro.erro.id}"/>
+				<h:outputLabel value="Nome" />
+				<b:inputText span="8" placeholder="Digite o Nome do Erro" value="#{controleErro.erro.nome}"/>
+				<h:outputLabel value="Descrição" />
+				<b:inputText span="8" placeholder="Digite a Descrição" value="#{controleErro.erro.descricao}"/>
+				<h:outputLabel value="Tipo" />
+				<b:inputText span="8" placeholder="Digite o Tipo" value="#{controleErro.erro.tipo}"/>
+				<h:outputLabel value="Status" />
+				<b:inputText span="8" placeholder="Digite o Status" value="#{controleErro.erro.status}"/>
+				
+				<h:outputLabel value="Equipamentos" />
+		       		<p:selectManyMenu id="equipamento" value="#{controleErro.erro.equipamento}" filter="true" filterMatchMode="contains" showCheckbox="true" col-md="6">
+		            <f:selectItems value="#{visaoErro.equipamentos}" var="equipamento" itemLabel="#{equipamento.descricao}" itemValue="#{equipamento}" />
+				</p:selectManyMenu>
+				<h:outputLabel value="Equipamentos" />
+		       		<p:selectManyMenu id="equipamento" value="#{controleErro.erro.sensor}" filter="true" filterMatchMode="contains" showCheckbox="true" col-md="6">
+		            <f:selectItems value="#{visaoErro.sensores}" var="sensor" itemLabel="#{sensor.id}" itemValue="#{sensor}" />
+				</p:selectManyMenu>
+						
+					
+				</b:panelGrid>
+				<b:commandButton value="Salvar" actionListener="#{controleErro.cadastraErro()}" look="success" />
+				
+			
+				
+			</b:panel>
+		</h:form>
+</ui:define>
+</ui:composition>
+</html>

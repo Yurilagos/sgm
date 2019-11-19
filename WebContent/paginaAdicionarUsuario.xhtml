@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="template/template.xhtml">	
+	
+<ui:define name="conteudo">
+	
+		<h:form id="form">
+			<b:panel title="Cadastro de Usuario" collapsible="false">
+				<b:panelGrid colSpans="2,10" size="xs">
+				
+				<h:outputLabel value="Nome" />
+				<b:inputText span="8" placeholder="Digite o nome" value="#{usuarioBean.usuario.nome}"/>
+				<h:outputLabel value="Sobrenome" />
+				<b:inputText span="8" placeholder="Digite o Sobrenome" value="#{usuarioBean.usuario.sobrenome}"/>
+				<h:outputLabel value="CPF" />
+				<b:inputText span="8" placeholder="Digite o CPF" value="#{usuarioBean.usuario.cpf}"/>
+				<h:outputLabel value="funcao" />
+				<b:inputText span="8" placeholder="Digite a Função" value="#{usuarioBean.usuario.funcao}"/>
+				<h:outputLabel value="Login" />	
+				<b:inputText span="8" placeholder="Digite o Login" value="#{usuarioBean.usuario.login}"/>
+				<h:outputLabel value="Senha" />
+				<b:inputText span="8" placeholder="Digite a Senha" value="#{usuarioBean.usuario.senha}"/>
+				<h:outputLabel value="Status" />
+				<b:inputText span="8" placeholder="Digite o Status" value="#{usuarioBean.usuario.status}"/>			
+					
+				</b:panelGrid>
+				<p:commandButton value="Salvar" actionListener="#{usuarioBean.cadastraUsuario}" look="success" update="form"/>
+				
+			</b:panel>
+		</h:form>
+	
+</ui:define>
+</ui:composition>
+</html>

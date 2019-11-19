@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<ui:composition template="template/template.xhtml">	
+	
+<ui:define name="conteudo">		
+		<h:form>
+			<b:panel title="Cadastro de Evento" collapsible="false">
+				<b:panelGrid colSpans="2,10" size="xs">
+				
+				<h:outputLabel value="Descricao" />
+				<b:inputText span="8" placeholder="Digite a descrição" value="#{eventoBean.evento.descricao}"/>
+				<h:outputLabel value="Prioridade" />
+				<b:inputText span="8" placeholder="Digite o status" value="#{eventoBean.evento.descricao}"/>
+
+				<p:outputLabel for="usuario" value="Usuario :" />
+        		<p:selectOneMenu id="usuario" value="#{visaoEvento.usuario.nome}">
+         		   <f:selectItem itemLabel="Select One" itemValue="" />
+           		   <f:selectItems itemLabel="#{usuario.nome}" value="#{visaoEvento.usuarioList}" />
+        		</p:selectOneMenu>
+        
+        
+				<h:outputLabel value="Status" />
+				<b:inputText span="8" placeholder="Digite o status" value="#{eventoBean.evento.status}"/>
+				
+						
+					
+				</b:panelGrid>
+				<b:commandButton value="Salvar" actionListener="#{eventoBean.cadastraEventoBean()}" look="success" />
+				
+			
+				
+			</b:panel>
+		</h:form>
+</ui:define>
+</ui:composition>
+</html>
